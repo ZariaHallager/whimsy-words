@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Journal Entry</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="edit-entry-container">
+      <h1 class="edit-entry-title">
+        ✨ Add a Splash of Whimsy to Your Journal ✨
+      </h1>
+
+      <form action="/journal" method="POST" class="edit-entry-form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Give your entry a fun title!"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="Pour your heart out here!"
+            required
+            class="form-textarea"
+          ></textarea>
+        </div>
+
+        <!-- Feeling Dropdown -->
+        <div class="form-group">
+          <label for="feeling">How are you feeling today?</label>
+          <select id="feeling" name="feeling" required class="form-select">
+            <option value="" disabled selected>Select an emotion...</option>
+            <option value="Happy">Happy 😊</option>
+            <option value="Excited">Excited 🎉</option>
+            <option value="Relaxed">Relaxed 😌</option>
+            <option value="Anxious">Anxious 😰</option>
+            <option value="Tired">Tired 😴</option>
+            <option value="Content">Content 🥰</option>
+            <option value="Curious">Curious 🤔</option>
+            <option value="Overwhelmed">Overwhelmed 😵</option>
+            <option value="Motivated">Motivated 💪</option>
+            <option value="Silly">Silly 🤪</option>
+          </select>
+        </div>
+
+        <!-- Water Dropdown -->
+        <div class="form-group">
+          <label for="water">Did you drink water today?</label>
+          <select id="water" name="water" required class="form-select">
+            <option value="" disabled selected>Select...</option>
+            <option value="Yes">Yes 💧</option>
+            <option value="No">No 😅</option>
+          </select>
+        </div>
+
+        <!-- Date Input -->
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <button type="submit" class="submit-button">
+          Save My Magical Entry
+        </button>
+      </form>
+
+      <a href="/journal" class="back-link">Back to All Entries</a>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

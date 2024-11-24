@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Home Link -->
+    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>>🏡 Home</a>
+
+    <!-- Journal Entries -->
+    <% if (user) { %>
+      <a href="/journal" <%- title === 'My Journal' ? 'class="active"' : '' %>>📖 My Journal</a>
+      <a href="/journal/new" <%- title === 'New Entry' ? 'class="active"' : '' %>>➕ Add New Entry</a>
+      <a href="/logout" class="logout">🚪 Log Out</a>
+      <span class="user-info">✨ Welcome, <%= user.name %>! ✨</span>
+    <% } else { %>
+      <!-- Login if user isn't authenticated -->
+      <a href="/auth/google" class="login">🔑 Log In&nbsp;</a>
+    <% } %>
+  </nav>
+</body>
+</html>

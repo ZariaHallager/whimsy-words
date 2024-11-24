@@ -1,0 +1,360 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #f8f1f1;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #6a1b9a;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ff66b2;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #ff9fd3;
+  transform: scale(1.1);
+}
+
+.navbar a.active {
+  background-color: #ffffcc;
+  color: #ff66b2;
+}
+
+.navbar .user-info {
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar .login {
+  background-color: #6a4c93;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar .login:hover {
+  background-color: #ff66b2;
+  transform: scale(1.1);
+}
+
+.navbar .logout {
+  background-color: #ff3333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar .logout:hover {
+  background-color: #ff1f1f;
+  transform: scale(1.1);
+}
+
+.journal-form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+select {
+  cursor: pointer;
+}
+
+.water-options {
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+}
+
+.water-options input {
+  margin-right: 5px;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  background-color: #6a1b9a;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #8e24aa;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #6a1b9a;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.journal-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.journal-entry {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.journal-entry:hover {
+  transform: scale(1.05);
+}
+
+.journal-title {
+  font-size: 1.8em;
+  color: #ff66b2;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.journal-content {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #444;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #6a4c93;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #ff66b2;
+}
+
+.delete-form {
+  display: inline;
+}
+
+.no-entries {
+  text-align: center;
+  font-size: 1.3em;
+  color: #ff9f9f;
+  font-style: italic;
+  margin-top: 30px;
+}
+
+.add-entry-button {
+  display: block;
+  background-color: #ff66b2;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.3em;
+  margin: 50px auto;
+  width: 220px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.add-entry-button:hover {
+  transform: scale(1.1);
+  background-color: #6a4c93;
+}
+
+.main {
+  text-align: center;
+}
+
+.intro-section {
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin: 0 auto;
+  max-width: 900px;
+  background-color: #ffeff6;
+}
+
+.title {
+  font-size: 3em;
+  color: #ff66b2;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+  font-size: 1.5em;
+  color: #6a4c93;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.whimsy-image {
+  margin: 30px auto;
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s ease-in-out infinite;
+}
+
+.intro-text {
+  font-size: 1.2em;
+  color: #444;
+  line-height: 1.8;
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+.explore-button {
+  display: inline-block;
+  background-color: #ff66b2;
+  color: white;
+  padding: 15px 30px;
+  margin-top: 30px;
+  font-size: 1.3em;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #6a4c93;
+  transform: scale(1.1);
+}
+
+/* Floating animation for whimsy image */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #ff66b2;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-text {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.footer-note {
+  font-size: 1em;
+  font-style: italic;
+  margin-top: 10px;
+  color: #fef2f2;
+  font-weight: bold;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #ff9fd3;
+  text-decoration: underline;
+}

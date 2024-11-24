@@ -3,25 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Journal</title>
-    <link rel="stylesheet" href="/style.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Whimsy Words - Your Magical Journal</title>
   </head>
   <body>
-    <h1>Your Journal Entries</h1>
-    <a href="/create">Create New Entry</a>
-    <ul>
-      <% entries.forEach(entry => { %>
-      <li>
-        <a href="/entry/<%= entry._id %>"><%= entry.title %></a>
-        <form
-          action="/entry/<%= entry._id %>/delete"
-          method="POST"
-          style="display: inline"
-        >
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-      <% }); %>
-    </ul>
+    <!-- Include Header Partial -->
+    <%- include('partials/header') %>
+
+    <main>
+      <div class="intro-section">
+        <h1 class="title">✨ Welcome to Whimsy Words! ✨</h1>
+        <p class="tagline">
+          Your enchanted space to capture magical moments, curious thoughts, and
+          whimsical dreams. 🌈
+        </p>
+
+        <img
+          src="/images/whimsy-magic.png"
+          alt="Whimsy Magic"
+          class="whimsy-image"
+        />
+
+        <p class="intro-text">
+          Whether it's a fleeting idea, a heartfelt memory, or just something
+          wonderfully weird, Whimsy Words is here to keep it safe. Let your
+          imagination run wild, and let us take care of the rest. ✍️💭
+        </p>
+      </div>
+    </main>
+
+    <!-- Include Footer Partial -->
+    <%- include('partials/footer') %>
   </body>
 </html>

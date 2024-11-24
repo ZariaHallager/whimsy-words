@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= journal.title %> - Your Journal</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="show-entry-container">
+      <h1 class="show-entry-title">✨ <%= journal.title %> ✨</h1>
+
+      <div class="entry-details">
+        <p><strong>Content:</strong></p>
+        <p><%= journal.content %></p>
+
+        <p>
+          <strong>How are you feeling today?</strong> <%= journal.feeling %>
+        </p>
+
+        <p><strong>Did you drink water today?</strong> <%= journal.water %></p>
+
+        <p><strong>Date:</strong> <%= journal.date %></p>
+      </div>
+
+      <div class="actions">
+        <!-- Edit Button -->
+        <a href="/journal/<%= journal._id %>/edit" class="edit-button"
+          >Edit Entry</a
+        >
+
+        <!-- Delete Button -->
+        <form
+          action="/journal/<%= journal._id %>?_method=DELETE"
+          method="POST"
+          class="delete-form"
+        >
+          <button type="submit" class="delete-button">Delete</button>
+        </form>
+      </div>
+
+      <!-- Back to All Entries -->
+      <a href="/journal" class="back-link">Back to Journal Entries</a>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

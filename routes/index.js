@@ -1,94 +1,36 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const Entry = require('./models/Entry');
+var express = require('express');
+var router = express.Router();
+const passport = require('passport');
 
-const app = express();
-
-// Connect to MongoDB
-mongoose
-    .connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => console.log('MongoDB connected'))
-    .catch((err) => console.error(err));
-
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-
-// Routes
-// Home route - list all entries
-app.get('/', async (req, res) => {
-    try {
-        const entries = await Entry.find();
-        res.render('index', { entries });
-    } catch (err) {
-        res.status(500).send('Error fetching entries.');
+router.get('/', function (req, res) {
+    res.render('index', { title: "Homepage" })
+})
+// Google OAuth login route
+router.get('/auth/google', passport.authenticate(
+    // Which passport strategy is being used?
+    'google',
+    {
+        // Requesting the user's profile and email
+        scope: ['profile', 'email'],
+        // Optionally force pick account every time
+        // prompt: "select_account"
     }
-});
+));
 
-// Create entry form
-app.get('/create', (req, res) => {
-    res.render('create');
-});
+// Google OAuth callback route
+router.get('/oauth2callback', passport.authenticate(
+    'google',
+    {
+        successRedirect: '/journal/new',
+        failureRedirect: '/'
+    }
+));
 
-// Handle new entry creation
-app.post('/create', async (req, res) => {
-    const { title, content } = req.body;
-    try {
-        const newEntry = new Entry({ title, content });
-        await newEntry.save();
+// OAuth logout route
+router.get('/logout', function (req, res) {
+    req.logout(function () {
         res.redirect('/');
-    } catch (err) {
-        res.status(500).send('Error creating entry.');
-    }
+    });
 });
 
-// View single entry
-app.get('/entry/:id', async (req, res) => {
-    try {
-        const entry = await Entry.findById(req.params.id);
-        res.render('entry', { entry });
-    } catch (err) {
-        res.status(404).send('Entry not found.');
-    }
-});
-
-// Edit entry form
-app.get('/entry/:id/edit', async (req, res) => {
-    try {
-        const entry = await Entry.findById(req.params.id);
-        res.render('edit', { entry });
-    } catch (err) {
-        res.status(404).send('Entry not found.');
-    }
-});
-
-// Handle entry update
-app.post('/entry/:id/edit', async (req, res) => {
-    const { title, content } = req.body;
-    try {
-        await Entry.findByIdAndUpdate(req.params.id, { title, content });
-        res.redirect('/');
-    } catch (err) {
-        res.status(500).send('Error updating entry.');
-    }
-});
-
-// Handle entry deletion
-app.post('/entry/:id/delete', async (req, res) => {
-    try {
-        await Entry.findByIdAndDelete(req.params.id);
-        res.redirect('/');
-    } catch (err) {
-        res.status(500).send('Error deleting entry.');
-    }
-});
-
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = router;

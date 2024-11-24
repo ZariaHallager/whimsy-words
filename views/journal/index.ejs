@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Journal</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <div class="container">
+      <h1>Your Magical Journal Entries</h1>
+
+      <% if (journals.length > 0) { %>
+      <ul class="journal-list">
+        <% journals.forEach(journal => { %>
+        <li class="journal-entry">
+          <!-- Title now links to the show page -->
+          <h2 class="journal-title">
+            <a href="/journal/<%= journal._id %>"><%= journal.title %></a>
+          </h2>
+
+          <!-- Display content of the journal entry -->
+          <p class="journal-content"><%= journal.content %></p>
+
+          <!-- Display feeling -->
+          <p class="journal-feeling">Feeling: <%= journal.feeling %></p>
+
+          <!-- Display date -->
+          <p class="journal-date">
+            Date: <%= new Date(journal.date).toLocaleDateString() %>
+          </p>
+
+          <!-- Display water intake status -->
+          <p class="journal-water">
+            Did you drink water today? <%= journal.water %>
+          </p>
+
+          <div class="actions">
+            <!-- Edit and Delete buttons -->
+            <a href="/journal/<%= journal._id %>/edit" class="edit-button"
+              >Edit</a
+            >
+            <form
+              action="/journal/<%= journal._id %>?_method=DELETE"
+              method="POST"
+              class="delete-form"
+            >
+              <button type="submit" class="delete-button">Delete</button>
+            </form>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+      <% } else { %>
+      <p class="no-entries">
+        Oh no! No journal entries found. Time to add one and let the magic
+        begin!
+      </p>
+      <% } %>
+
+      <a href="/journal/new" class="add-entry-button">Add New Entry ✨</a>
+    </div>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
