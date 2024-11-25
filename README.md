@@ -1,6 +1,6 @@
 # Whimsy Words
 
-[Click To View](#)
+[Click To View](https://whimsy-words.onrender.com/)
 
 ## Description
 
@@ -18,10 +18,6 @@ Key features include:
 ## Screenshots Of Whimsy Words
 
 ![Home Page](/public/img/Screenshot%202024-11-24%20at%206.12.42 PM.png)
-
-![Add Journal Entry](#)
-
-![Edit Journal Entry](#)
 
 ## Languages Used
 
